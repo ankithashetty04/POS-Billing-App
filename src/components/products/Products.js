@@ -1,0 +1,47 @@
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { startGetProductData } from '../../actions/productAction'
+import AddProducts from './AddProducts'
+import EditProducts from './editProducts'
+import ProductsList from './ProductsList'
+
+const Products = () => {
+	const [toggle, setToggle] = useState(false)
+
+	const dispatch = useDispatch()
+
+	const handleToggle = (value) => {
+		setToggle(value)
+	}
+
+	const handleEdit = (id) => {
+		handleToggle(true)
+		dispatch(startGetProductData(id))
+	}
+
+	const productsData = useSelector((state) => state.bill.productsData)
+	return (
+		<div>
+			{toggle && Object.keys(productsData).length > 0 ? (
+				<div>
+					<h1>Edit Product</h1>
+					<EditProducts
+						toggle={toggle}
+						handleToggle={handleToggle}
+						{...productsData}
+					/>
+				</div>
+			) : (
+				<div>
+					<h1>Add Products</h1>
+					<AddProducts />
+				</div>
+			)}
+
+			<hr />
+			<ProductsList handleEdit={handleEdit} />
+		</div>
+	)
+}
+
+export default Products
