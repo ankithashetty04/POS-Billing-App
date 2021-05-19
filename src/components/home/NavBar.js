@@ -19,7 +19,7 @@ import Dashboard from '../dashboard/Dashboard'
 import Products from '../products/Products'
 import Customer from '../customers/Customers'
 import Billing from '../billing/Billing'
-import Profile from '../userAuth/Profile'
+import Profile from './Profile'
 
 const useStyles = makeStyles((theme) => ({
 	// root: {
