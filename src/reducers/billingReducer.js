@@ -5,40 +5,30 @@ const initialState = {
 	customerData: {},
 	productsData: {},
 	billData: {},
-	cart: [],
 	addBillData: {},
+	cart: [],
 }
 
 const billingReducer = (state = initialState, action) => {
 	switch (action.type) {
+		/* ---------for customers actions--------- */
+
+		//to add new customer data
+		case 'ADD_CUSTOMER': {
+			return { ...state, customers: [action.payload, ...state.customers] }
+		}
+
+		//to get all the existing customers data
 		case 'GET_CUSTOMERS': {
 			return { ...state, customers: [...action.payload] }
 		}
 
-		case 'GET_PRODUCTS': {
-			return { ...state, products: [...action.payload] }
-		}
-		case 'ADD_CUSTOMER': {
-			return { ...state, customers: [action.payload, ...state.customers] }
-		}
-		case 'ADD_PRODUCT': {
-			return {
-				...state,
-				products: [action.payload, ...state.products],
-			}
-		}
+		//to get data of selected customer
 		case 'GET_CUSTOMER_DATA': {
 			return { ...state, customerData: action.payload }
 		}
 
-		case 'CLEAR_CUST_DATA': {
-			return { ...state, customerData: {} }
-		}
-
-		case 'CLEAR_PROD_DATA': {
-			return { ...state, productsData: {} }
-		}
-
+		//to edit the selected customer
 		case 'EDIT_CUSTOMER': {
 			return {
 				...state,
@@ -52,6 +42,7 @@ const billingReducer = (state = initialState, action) => {
 			}
 		}
 
+		//to delete the selected customer
 		case 'DELETE_CUSTOMER': {
 			return {
 				...state,
@@ -60,10 +51,33 @@ const billingReducer = (state = initialState, action) => {
 				}),
 			}
 		}
+
+		//to clear the customer data from store object used for edit functionality
+		case 'CLEAR_CUST_DATA': {
+			return { ...state, customerData: {} }
+		}
+
+		/*----------------------for products actions----------------------*/
+
+		//to add new product data
+		case 'ADD_PRODUCT': {
+			return {
+				...state,
+				products: [action.payload, ...state.products],
+			}
+		}
+
+		//to get all the products data
+		case 'GET_PRODUCTS': {
+			return { ...state, products: [...action.payload] }
+		}
+
+		//to get selected product data
 		case 'GET_PRODUCT_DATA': {
 			return { ...state, productsData: action.payload }
 		}
 
+		//to edit the selected product data
 		case 'EDIT_PRODUCT': {
 			return {
 				...state,
@@ -77,6 +91,7 @@ const billingReducer = (state = initialState, action) => {
 			}
 		}
 
+		//to delete the selected product data
 		case 'DELETE_PRODUCT': {
 			return {
 				...state,
@@ -86,14 +101,26 @@ const billingReducer = (state = initialState, action) => {
 			}
 		}
 
+		//to clear the product data from store object used for edit functionality
+		case 'CLEAR_PROD_DATA': {
+			return { ...state, productsData: {} }
+		}
+
+		/*---------------Billing functionality---------------*/
+
+		//to add products into the lineItems
+
+		//to add items into cart
 		case 'ADD_TO_CART': {
 			return { ...state, cart: [...state.cart, action.payload] }
 		}
 
+		//to display the items in the cart
 		case 'DISPLAY_CART': {
 			return { ...state, cart: state.cart }
 		}
 
+		//to remove the data from the cart
 		case 'REMOVE_FROM_CART': {
 			return {
 				...state,
@@ -102,14 +129,18 @@ const billingReducer = (state = initialState, action) => {
 				}),
 			}
 		}
+
+		//to clear all the items from the cart
 		case 'CLEAR_CART': {
 			return { ...state, cart: [] }
 		}
 
+		//to add customer data into the invoice
 		case 'ADD_BILL_DATA': {
 			return { ...state, addBillData: { ...action.payload } }
 		}
 
+		//to get all the bills data
 		case 'GET_BILLS_DATA': {
 			return {
 				...state,
@@ -117,31 +148,39 @@ const billingReducer = (state = initialState, action) => {
 			}
 		}
 
+		//to clear the bill data
 		case 'CLEAR_BILL_DATA': {
 			return {
 				...state,
 				addBillData: {},
 			}
 		}
+
+		//to get the data of all bills from the server
 		case 'GET_BILLS': {
-			//console.log('getbill', action.payload)
 			return {
 				...state,
 				bills: [...action.payload],
 			}
 		}
+
+		//to generate the bill upon order confirmation
 		case 'CREATE_BILL': {
 			return {
 				...state,
 				bills: [action.payload, ...state.bills],
 			}
 		}
+
+		//to get the data of the selected bill
 		case 'GET_BILL_DATA': {
 			return {
 				...state,
 				billData: action.payload,
 			}
 		}
+
+		//to delete the data of the selected bill
 		case 'DELETE_BILL': {
 			return {
 				...state,
@@ -150,8 +189,10 @@ const billingReducer = (state = initialState, action) => {
 				}),
 			}
 		}
+
+		//returns the initialstate
 		default: {
-			return state
+			return { ...state }
 		}
 	}
 }

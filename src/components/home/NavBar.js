@@ -55,7 +55,7 @@ const NavBar = (props) => {
 			localStorage.removeItem('token')
 			handleAuth()
 			alert('succesfully logged out')
-			props.history.push('/home')
+			props.history.push('/')
 			dispatch(logoutUser())
 		}
 	}
@@ -83,7 +83,7 @@ const NavBar = (props) => {
 					return <Login {...props} handleAuth={handleAuth} />
 				}}
 			/>
-			<Route path='/home' component={Home} />
+			<Route path='/' component={Home} exact={true} />
 			<Route path='/dashboard' component={DashBoardContainer} />
 			<Route path='/products' component={Products} />
 			<Route path='/customers' component={Customer} />

@@ -2,14 +2,11 @@ import React from 'react'
 import { Link, Route, withRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../actions/userAuthAction'
-import Login from './Login'
-import Register from './Register'
 import DashBoardContainer from '../dashboard/DashBoardContainer'
 import Products from '../products/Products'
 import Customer from '../customers/Customers'
 import Billing from '../billing/Billing'
 import Profile from './Profile'
-
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
@@ -140,44 +137,36 @@ const DrawerComp = (props) => {
 				</div>
 				<Divider />
 				<List onClick={handleDrawerClose}>
-					<ListItem button key='Dashboard'>
-						<ListItemIcon>
-							{/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-						</ListItemIcon>
-						{/* <ListItemText primary={text} /> */}
-					</ListItem>
-					<List>
-						<Link to='/dashboard'>
-							<ListItem button>
-								<ListItemText className={classes.link} primary='Dashboard' />
-							</ListItem>
-						</Link>
-						<Link to='/products'>
-							<ListItem button>
-								<ListItemText className={classes.link} primary='Products' />
-							</ListItem>
-						</Link>
-						<Link to='/customers'>
-							<ListItem button>
-								<ListItemText className={classes.link} primary='Customer' />
-							</ListItem>
-						</Link>
-						<Link to='/billing'>
-							<ListItem button>
-								<ListItemText className={classes.link} primary='Billing' />
-							</ListItem>
-						</Link>
-						<Link to='/profile'>
-							<ListItem button>
-								<ListItemText className={classes.link} primary='Profile' />
-							</ListItem>
-						</Link>
-						<Link to='/home' onClick={handleLogout}>
-							<ListItem button>
-								<ListItemText className={classes.link} primary='Logout' />
-							</ListItem>
-						</Link>
-					</List>
+					<Link to='/dashboard'>
+						<ListItem button>
+							<ListItemText className={classes.link} primary='Dashboard' />
+						</ListItem>
+					</Link>
+					<Link to='/products'>
+						<ListItem button>
+							<ListItemText className={classes.link} primary='Products' />
+						</ListItem>
+					</Link>
+					<Link to='/customers' className={classes.link}>
+						<ListItem button>
+							<ListItemText className={classes.link} primary='Customer' />
+						</ListItem>
+					</Link>
+					<Link to='/billing' className={classes.link}>
+						<ListItem button>
+							<ListItemText primary='Billing' />
+						</ListItem>
+					</Link>
+					<Link to='/profile'>
+						<ListItem button>
+							<ListItemText className={classes.link} primary='Profile' />
+						</ListItem>
+					</Link>
+					<Link to='' onClick={handleLogout}>
+						<ListItem button>
+							<ListItemText className={classes.link} primary='Logout' />
+						</ListItem>
+					</Link>
 				</List>
 			</Drawer>
 			<main

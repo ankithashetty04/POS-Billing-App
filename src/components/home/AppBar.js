@@ -50,7 +50,7 @@ const AppBarComp = () => {
 							container
 							spacing={5}>
 							<Grid item>
-								<Link to='/home' className={classes.link}>
+								<Link to='/' className={classes.link}>
 									Home
 								</Link>
 							</Grid>

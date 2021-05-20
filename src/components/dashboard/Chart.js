@@ -7,7 +7,6 @@ import _ from 'lodash'
 import {
 	ComposedChart,
 	Line,
-	Area,
 	Bar,
 	XAxis,
 	YAxis,

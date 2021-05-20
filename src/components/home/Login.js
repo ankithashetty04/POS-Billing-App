@@ -3,6 +3,7 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { makeStyles, Button, TextField, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { startLoginUser } from '../../actions/userAuthAction'
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
 		marginLeft: theme.spacing(15),
 		marginRight: theme.spacing(15),
 		width: '40ch',
+	},
+	link: {
+		textDecoration: 'none',
+		color: 'blue',
 	},
 }))
 
@@ -116,6 +121,12 @@ const Login = (props) => {
 					Login
 				</Button>
 			</form>
+			<Typography>
+				Not Registered ?
+				<Link to='/register' className={classes.link}>
+					Register here
+				</Link>
+			</Typography>
 		</div>
 	)
 }

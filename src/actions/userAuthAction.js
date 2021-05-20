@@ -4,7 +4,7 @@ import axios from 'axios'
 export const startRegisterUser = (formData) => {
 	return (dispatch) => {
 		axios
-			.post(' http://dct-billing-app.herokuapp.com/api/users/register', formData)
+			.post(' https://dct-billing-app.herokuapp.com/api/users/register', formData)
 			.then((response) => {
 				const registerData = response.data
 
@@ -35,7 +35,7 @@ export const registerUser = (userData) => {
 export const startLoginUser = (formData) => {
 	return (dispatch) => {
 		axios
-			.post('http://dct-billing-app.herokuapp.com/api/users/login', formData)
+			.post('https://dct-billing-app.herokuapp.com/api/users/login', formData)
 			.then((response) => {
 				const loginData = response.data
 				if (Object.keys(loginData).includes('errors')) {
@@ -59,11 +59,11 @@ export const loginUser = (loginData) => {
 	}
 }
 
-//fetching user account info
+//fetching logged in user account info
 export const startGetUserInfo = () => {
 	return (dispatch) => {
 		axios
-			.get('http://dct-billing-app.herokuapp.com/api/users/account', {
+			.get('https://dct-billing-app.herokuapp.com/api/users/account', {
 				headers: {
 					Authorization: localStorage.getItem('token'),
 				},
@@ -79,6 +79,7 @@ export const startGetUserInfo = () => {
 	}
 }
 
+//logged in user info
 export const userInfo = (info) => {
 	return {
 		type: 'USER_INFO',
