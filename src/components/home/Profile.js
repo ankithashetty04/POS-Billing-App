@@ -11,12 +11,12 @@ import {
 
 const useStyles = makeStyles({
 	root: {
-		minHeight: '100vh',
+		minHeight: '80vh',
 	},
 	card: {
 		//minWidth: '500v',
 		minWidth: 285,
-		width: 800,
+		width: 700,
 	},
 	title: {
 		fontSize: 30,

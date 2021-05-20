@@ -84,6 +84,10 @@ const useStyles = makeStyles((theme) => ({
 		}),
 		marginLeft: 0,
 	},
+	link: {
+		textDecoration: 'none',
+		color: 'black',
+	},
 }))
 
 const DrawerComp = (props) => {
@@ -137,19 +141,19 @@ const DrawerComp = (props) => {
 				</div>
 				<Divider />
 				<List onClick={handleDrawerClose}>
-					<Link to='/dashboard'>
+					<Link to='/dashboard' className={classes.link}>
 						<ListItem button>
-							<ListItemText className={classes.link} primary='Dashboard' />
+							<ListItemText primary='Dashboard' />
 						</ListItem>
 					</Link>
-					<Link to='/products'>
+					<Link to='/products' className={classes.link}>
 						<ListItem button>
-							<ListItemText className={classes.link} primary='Products' />
+							<ListItemText primary='Products' />
 						</ListItem>
 					</Link>
 					<Link to='/customers' className={classes.link}>
 						<ListItem button>
-							<ListItemText className={classes.link} primary='Customer' />
+							<ListItemText primary='Customer' />
 						</ListItem>
 					</Link>
 					<Link to='/billing' className={classes.link}>
@@ -157,14 +161,14 @@ const DrawerComp = (props) => {
 							<ListItemText primary='Billing' />
 						</ListItem>
 					</Link>
-					<Link to='/profile'>
+					<Link to='/profile' className={classes.link}>
 						<ListItem button>
-							<ListItemText className={classes.link} primary='Profile' />
+							<ListItemText primary='Profile' />
 						</ListItem>
 					</Link>
-					<Link to='' onClick={handleLogout}>
+					<Link to='' onClick={handleLogout} className={classes.link}>
 						<ListItem button>
-							<ListItemText className={classes.link} primary='Logout' />
+							<ListItemText primary='Logout' />
 						</ListItem>
 					</Link>
 				</List>

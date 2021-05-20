@@ -71,11 +71,11 @@ const Dashboard = () => {
 				<CardHeader title='Total Amount'></CardHeader>
 				<CardContent className={classes.title}>{totalAmount()}</CardContent>
 			</Card>
-
+			{/* 
 			<h2>Total Products - {bill.products.length}</h2>
 			<h2>Total Customers - {bill.customers.length}</h2>
 			<h2>Total Orders - {bill.bills.length}</h2>
-			<h2>Total Amount - {totalAmount()}</h2>
+			<h2>Total Amount - {totalAmount()}</h2> */}
 		</div>
 	)
 }
