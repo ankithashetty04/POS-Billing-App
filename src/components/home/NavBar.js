@@ -2,38 +2,45 @@ import React, { useEffect } from 'react'
 import { Link, Route, withRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../actions/userAuthAction'
-import {
-	makeStyles,
-	Grid,
-	AppBar,
-	Toolbar,
-	Typography,
-	IconButton,
-	Button,
-	MenuItem,
-} from '@material-ui/core'
+import { makeStyles, Grid } from '@material-ui/core'
 
 import Login from './Login'
 import Register from './Register'
-import Dashboard from '../dashboard/Dashboard'
+import DashBoardContainer from '../dashboard/DashBoardContainer'
 import Products from '../products/Products'
 import Customer from '../customers/Customers'
 import Billing from '../billing/Billing'
 import Profile from './Profile'
+import Home from './Home'
+import DrawerComp from './Drawer'
+import AppBarComp from './AppBar'
+
+// const useStyles = makeStyles((theme) => ({
+// 	// // root: {
+// 	// // 	display: 'flex',
+// 	// // 	flexWrap: 'wrap',
+// 	// // },
+// 	// root: {
+// 	// 	flexGrow: 1,
+// 	// },
+// 	// appBar: {
+// 	// 	color: 'b6c9f0',
+// 	// },
+// 	// title: {
+// 	// 	flexGrow: 1,
+// 	// },
+// }))
 
 const useStyles = makeStyles((theme) => ({
-	// root: {
-	// 	display: 'flex',
-	// 	flexWrap: 'wrap',
-	// },
 	root: {
-		flexGrow: 1,
+		display: 'flex',
 	},
-	appBar: {
-		color: 'b6c9f0',
+	drawerPaper: {
+		width: 'inherit',
 	},
-	title: {
-		flexGrow: 1,
+	link: {
+		textDecoration: 'none',
+		color: theme.palette.text.primary,
 	},
 }))
 
@@ -47,9 +54,9 @@ const NavBar = (props) => {
 		if (confirm) {
 			localStorage.removeItem('token')
 			handleAuth()
-			dispatch(logoutUser())
-			props.history.push('/')
 			alert('succesfully logged out')
+			props.history.push('/home')
+			dispatch(logoutUser())
 		}
 	}
 
@@ -57,45 +64,15 @@ const NavBar = (props) => {
 		<div>
 			{userLoggedIn ? (
 				<div className={classes.root}>
-					{/* <AppBar position='static'>
-						<Toolbar edge='start' className={classes.appBar} aria-label='menu'> */}
-					<Grid container spacing={8} className={classes.root}>
-						<Grid item xs={2}>
-							<Link to='/dashboard'>Dashboard</Link>
-						</Grid>
-
-						<Grid item xs={2}>
-							<Link to='/products'>Products</Link>
-						</Grid>
-						<Grid item xs={2}>
-							<Link to='/customers'>Customer</Link>
-						</Grid>
-						<Grid item xs={2}>
-							<Link to='/billing'>Billing</Link>
-						</Grid>
-						<Grid item xs={2}>
-							<Link to='/profile'>Profile</Link>
-						</Grid>
-
-						<Grid item xs={2}>
-							<Link to='/' onClick={handleLogout}>
-								Logout
-							</Link>
-						</Grid>
-					</Grid>
-					{/* </Toolbar>
-					</AppBar> */}
+					<DrawerComp handleLogout={handleLogout} />
 				</div>
 			) : (
 				<div>
-					<Grid container spacing={10}>
-						<Grid item xs={5}>
-							<Link to='/register'>Register</Link>
-						</Grid>
-						<Grid item xs={5}>
-							<Link to='/login'>Login</Link>
-						</Grid>
-					</Grid>
+					<AppBarComp />
+
+					{/* <Link to='/home'>Home</Link>
+					<Link to='/register'>Register</Link>
+					<Link to='/login'>Login</Link> */}
 				</div>
 			)}
 
@@ -106,7 +83,8 @@ const NavBar = (props) => {
 					return <Login {...props} handleAuth={handleAuth} />
 				}}
 			/>
-			<Route path='/dashboard' component={Dashboard} />
+			<Route path='/home' component={Home} />
+			<Route path='/dashboard' component={DashBoardContainer} />
 			<Route path='/products' component={Products} />
 			<Route path='/customers' component={Customer} />
 			<Route path='/billing' component={Billing} />

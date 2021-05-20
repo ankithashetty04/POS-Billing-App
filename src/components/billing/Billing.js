@@ -6,7 +6,7 @@ import {
 	startGetBillData,
 } from '../../actions/billingAction'
 import { startGetUserInfo } from '../../actions/userAuthAction'
-import BillForm from './BillForm'
+import GenerateBill from './GenerateBill'
 import BillData from './BillData'
 import BillList from './BillList'
 import AddToCart from './AddToCart'
@@ -75,7 +75,7 @@ const Billing = () => {
 			)}
 
 			<div>
-				<BillForm />
+				<GenerateBill />
 			</div>
 
 			<hr />

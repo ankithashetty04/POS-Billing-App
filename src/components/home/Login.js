@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { makeStyles, Button, TextField } from '@material-ui/core'
+import { makeStyles, Button, TextField, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { startLoginUser } from '../../actions/userAuthAction'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
+		paddingTop: '40%',
+		paddingLeft: '50%',
 		display: 'flex',
 		flexWrap: 'wrap',
+		justifyContent: 'center',
+		direction: 'column',
+		minWidth: '100vh',
+	},
+	title: {
+		marginRight: '60%',
+		marginLeft: '35%',
+		width: '100px',
 	},
 	textField: {
 		marginLeft: theme.spacing(10),
@@ -67,7 +77,10 @@ const Login = (props) => {
 	})
 
 	return (
-		<div>
+		<div className={classes.root}>
+			<Typography className={classes.title} variant='h6'>
+				Login
+			</Typography>
 			<form onSubmit={formik.handleSubmit}>
 				<TextField
 					className={classes.textField}

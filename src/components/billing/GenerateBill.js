@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-const BillForm = () => {
+const GenerateBill = () => {
 	const dispatch = useDispatch()
 	const classes = useStyles()
 
@@ -125,4 +125,4 @@ const BillForm = () => {
 	)
 }
 
-export default BillForm
+export default GenerateBill

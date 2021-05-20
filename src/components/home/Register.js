@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { makeStyles, Button, TextField } from '@material-ui/core'
+import { makeStyles, Button, TextField, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { startRegisterUser } from '../../actions/userAuthAction'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
+		paddingTop: '30%',
+		paddingLeft: '50%',
 		display: 'flex',
 		flexWrap: 'wrap',
+		justifyContent: 'center',
+		direction: 'column',
+		minWidth: '100vh',
+	},
+	title: {
+		marginRight: '60%',
+		marginLeft: '35%',
+		width: '100px',
 	},
 	textField: {
 		marginLeft: theme.spacing(10),
@@ -80,7 +90,10 @@ const Register = (props) => {
 	})
 
 	return (
-		<div>
+		<div className={classes.root}>
+			<Typography className={classes.title} variant='h6'>
+				Register
+			</Typography>
 			<form onSubmit={formik.handleSubmit}>
 				<TextField
 					className={classes.textField}
