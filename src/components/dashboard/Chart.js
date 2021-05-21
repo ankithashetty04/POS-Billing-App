@@ -41,8 +41,8 @@ const Chart = () => {
 			{bills.length > 0 ? (
 				<div>
 					<ComposedChart
-						width={700}
-						height={500}
+						width={800}
+						height={600}
 						data={data}
 						margin={{
 							top: 20,
@@ -60,7 +60,15 @@ const Chart = () => {
 					</ComposedChart>
 				</div>
 			) : (
-				<div>No Orders Made</div>
+				<div
+					margin={{
+						top: 20,
+						right: 20,
+						bottom: 20,
+						left: 20,
+					}}>
+					No Orders Made
+				</div>
 			)}
 		</div>
 	)

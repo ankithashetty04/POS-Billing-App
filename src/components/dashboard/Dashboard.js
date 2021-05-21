@@ -14,19 +14,12 @@ import {
 const useStyles = makeStyles((theme) => ({
 	root: {
 		minWidth: 275,
-		alignItems: 'center',
+		marginBottom: '10px',
+		width: 200,
 	},
-	paper: {
-		display: 'flex',
-		flexWrap: 'wrap',
-		'& > *': {
-			margin: theme.spacing(1),
-			width: theme.spacing(16),
-			height: theme.spacing(16),
-		},
-	},
+
 	title: {
-		fontSize: 14,
+		fontSize: 28,
 	},
 }))
 
@@ -49,33 +42,25 @@ const Dashboard = () => {
 
 	return (
 		<div>
-			<Paper className={classes.paper} elevation={0} />
-			<Paper />
-			<Paper elevation={3} />
-
-			<Card className={classes.root}>
+			<Card className={classes.root} align='center'>
 				<CardHeader title='Total Products'></CardHeader>
 				<CardContent className={classes.title}>{bill.products.length}</CardContent>
 			</Card>
-			<Card className={classes.root}>
+
+			<Card className={classes.root} align='center'>
 				<CardHeader title='Total Customers'></CardHeader>
 				<CardContent className={classes.title}>{bill.customers.length}</CardContent>
 			</Card>
 
-			<Card className={classes.root}>
-				<CardHeader title='Total Orders '></CardHeader>
+			<Card className={classes.root} align='center'>
+				<CardHeader title='Total Orders'></CardHeader>
 				<CardContent className={classes.title}>{bill.bills.length}</CardContent>
 			</Card>
 
-			<Card className={classes.root}>
+			<Card className={classes.root} align='center'>
 				<CardHeader title='Total Amount'></CardHeader>
 				<CardContent className={classes.title}>{totalAmount()}</CardContent>
 			</Card>
-			{/* 
-			<h2>Total Products - {bill.products.length}</h2>
-			<h2>Total Customers - {bill.customers.length}</h2>
-			<h2>Total Orders - {bill.bills.length}</h2>
-			<h2>Total Amount - {totalAmount()}</h2> */}
 		</div>
 	)
 }

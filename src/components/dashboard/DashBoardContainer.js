@@ -14,7 +14,7 @@ const DashBoardContainer = () => {
 	return (
 		<div className={classes.root}>
 			<h1>Dashboard</h1>
-			<Box component='span' m={1}>
+			<Box component='span'>
 				<Grid container spacing>
 					<Grid item xs={4}>
 						<Dashboard />
