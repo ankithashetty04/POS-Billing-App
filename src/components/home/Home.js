@@ -1,23 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import NavBar from './NavBar'
-import { makeStyles, Container, Grid } from '@material-ui/core'
+import React from 'react'
+import { Container, Grid, makeStyles, Typography, Box } from '@material-ui/core'
+import DashBoardContainer from '../dashboard/DashBoardContainer'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		// backgroundColor: 'blue',
-		paddingTop: '50%',
-		marginLeft: '60%',
+		marginTop: '65%',
+		marginLeft: '40%',
 		marginRight: '40%',
 		width: '100vh',
-		alignItems: 'center',
 	},
 }))
 
-const Home = () => {
+const Home = (props) => {
 	const classes = useStyles()
+	const { userLoggedIn } = props
 	return (
-		<div className={classes.root}>
-			<h1>Welcome to POS - Billing App</h1>
+		<div>
+			{userLoggedIn ? (
+				<div>
+					<DashBoardContainer />
+				</div>
+			) : (
+				<>
+					<Box>
+						<Container>
+							<Grid align='center' className={classes.root}>
+								<Typography variant='Heading' component='h1'>
+									Welcome to POS - Billing App
+								</Typography>
+							</Grid>
+						</Container>
+					</Box>
+				</>
+			)}
 		</div>
 	)
 }

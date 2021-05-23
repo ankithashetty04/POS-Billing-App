@@ -15,22 +15,6 @@ import Home from './Home'
 import DrawerComp from './Drawer'
 import AppBarComp from './AppBar'
 
-// const useStyles = makeStyles((theme) => ({
-// 	// // root: {
-// 	// // 	display: 'flex',
-// 	// // 	flexWrap: 'wrap',
-// 	// // },
-// 	// root: {
-// 	// 	flexGrow: 1,
-// 	// },
-// 	// appBar: {
-// 	// 	color: 'b6c9f0',
-// 	// },
-// 	// title: {
-// 	// 	flexGrow: 1,
-// 	// },
-// }))
-
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
@@ -83,7 +67,14 @@ const NavBar = (props) => {
 					return <Login {...props} handleAuth={handleAuth} />
 				}}
 			/>
-			<Route path='/' component={Home} exact={true} />
+			<Route
+				path='/'
+				exact={true}
+				render={(props) => {
+					return <Home {...props} userLoggedIn={userLoggedIn} />
+				}}
+			/>
+			{/* <Route path='/' component={Home} exact={true} /> */}
 			<Route path='/dashboard' component={DashBoardContainer} />
 			<Route path='/products' component={Products} />
 			<Route path='/customers' component={Customer} />
