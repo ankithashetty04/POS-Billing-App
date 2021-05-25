@@ -17,7 +17,7 @@ import {
 
 const useStyles = makeStyles({
 	table: {
-		minWidth: 650,
+		minWidth: 550,
 	},
 })
 
@@ -31,7 +31,7 @@ const BillList = (props) => {
 	}, [])
 
 	const billsData = useSelector((state) => state.bill)
-	const bills = billsData.bills.reverse()
+	const bills = billsData.bills
 
 	const customerData = billsData.customers
 
@@ -49,12 +49,10 @@ const BillList = (props) => {
 						<TableCell align='center'>Sl.NO</TableCell>
 						<TableCell align='center'>Customer</TableCell>
 						<TableCell align='center'>Total</TableCell>
-						<TableCell align='center'></TableCell>
-						<TableCell align='center'></TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{bills.map((data, i) => (
+					{bills.reverse().map((data, i) => (
 						<TableRow key={data._id}>
 							<TableCell align='center'>{i + 1}</TableCell>
 							{customerData.map((ele) => {
@@ -69,7 +67,7 @@ const BillList = (props) => {
 
 							<TableCell align='center'>{data.total}</TableCell>
 
-							<TableCell>
+							<TableCell align='center'>
 								<Button
 									color='primary'
 									variant='outlined'
@@ -80,8 +78,7 @@ const BillList = (props) => {
 									View
 								</Button>
 							</TableCell>
-
-							<TableCell>
+							<TableCell align='center'>
 								<Button
 									color='secondary'
 									variant='outlined'

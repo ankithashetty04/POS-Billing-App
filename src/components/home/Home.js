@@ -5,10 +5,14 @@ import './home.css'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		marginTop: '60%',
-		marginLeft: '40%',
-		marginRight: '40%',
+		marginTop: '50%',
+		marginLeft: '30%',
+		marginRight: '10%',
 		width: '100vh',
+	},
+	subtitle: {
+		marginLeft: '30%',
+		marginRight: '20%',
 	},
 }))
 
@@ -27,23 +31,24 @@ const Home = (props) => {
 						<Container>
 							<Grid align='center' className={classes.root}>
 								<Typography
-									variant='Heading'
+									variant='h2'
 									color='primary'
 									className='typing'
 									component='h1'>
 									Welcome to POS - Billing App
 								</Typography>
-								<div>
-									<Typography className='typing'>To see the demo</Typography>
-									<Typography className='typing' component='h2' variant='body1'>
+								<div className={classes.subtitle}>
+									<Typography variant='h5' className='typing' component='h2'>
+										To see the demo
+									</Typography>
+									<Typography variant='h5' className='typing' component='h2'>
 										use the credentials
 										<br />
 										<strong>
-											ankitha@gmail.com
-											<br /> secret123
+											email : ankitha@gmail.com
+											<br /> password : secret123
 										</strong>
 									</Typography>
-									<Typography></Typography>
 								</div>
 							</Grid>
 						</Container>

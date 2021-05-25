@@ -83,7 +83,7 @@ const Billing = () => {
 			<BillList handleInvoice={handleInvoice} />
 			{toggleInvoice && Object.keys(billData).length > 0 && (
 				<Modal
-					open={handleToggle}
+					open={toggleInvoice}
 					aria-labelledby='simple-modal-title'
 					aria-describedby='simple-modal-description'>
 					<Invoice handleToggle={handleToggle} />

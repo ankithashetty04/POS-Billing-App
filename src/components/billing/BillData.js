@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useFormik } from 'formik'
-import * as yup from 'yup'
 import { makeStyles, Button, TextField } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import Autocomplete from '@material-ui/lab/Autocomplete'
@@ -63,13 +61,10 @@ const BillData = () => {
 		setName('')
 		setEmail('')
 		if (Object.values(formData).includes('') !== true) {
-			// if (Object.values(customerData).includes('') !== true) {
 			dispatch(billCustomerData(formData))
 		} else {
 			alert('Enter All required Fields')
 		}
-
-		console.log(formData)
 	}
 
 	return (

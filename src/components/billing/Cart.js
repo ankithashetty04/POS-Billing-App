@@ -8,13 +8,13 @@ import {
 	TableHead,
 	TableBody,
 	TableCell,
+	Typography,
 } from '@material-ui/core'
 import _ from 'lodash'
 
 const Cart = (props) => {
 	const { handleIncrease, handleDecrease } = props
 	const cart = useSelector((state) => state.bill.cart)
-
 	const dispatch = useDispatch()
 
 	const handleRemove = (id) => {
@@ -24,10 +24,19 @@ const Cart = (props) => {
 		}
 	}
 
+	const totalAmount = () => {
+		let total = 0
+		cart.forEach((ele) => (total += ele.products.price * ele.quantity))
+		return total
+	}
+
 	return (
 		<div>
 			<div>
-				<h1>cart - {cart.length}</h1>
+				<Typography variant='h4'>
+					Cart - {cart.length} | Total - {totalAmount()}
+				</Typography>
+				<Typography variant='h4'></Typography>
 				{cart.length > 0 ? (
 					<div>
 						<Table>
@@ -64,6 +73,7 @@ const Cart = (props) => {
 													+
 												</Button>
 											</TableCell>
+
 											<TableCell align='center'>
 												<Button
 													variant='contained'

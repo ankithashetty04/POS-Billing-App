@@ -12,13 +12,11 @@ const useStyles = makeStyles((theme) => ({
 		paddingLeft: '50%',
 		display: 'flex',
 		flexWrap: 'wrap',
-		justifyContent: 'center',
 		direction: 'column',
 		minWidth: '100vh',
 	},
 	title: {
-		marginRight: '60%',
-		marginLeft: '35%',
+		marginLeft: '30%',
 	},
 	textField: {
 		marginLeft: theme.spacing(10),
@@ -26,9 +24,14 @@ const useStyles = makeStyles((theme) => ({
 		width: '50ch',
 	},
 	button: {
-		marginLeft: theme.spacing(15),
-		marginRight: theme.spacing(15),
-		width: '40ch',
+		marginLeft: theme.spacing(20),
+		marginRight: theme.spacing(20),
+		width: '30ch',
+		marginTop: '1em',
+	},
+	register: {
+		marginLeft: '38%',
+		marginTop: '10px',
 	},
 	link: {
 		textDecoration: 'none',
@@ -124,8 +127,8 @@ const Login = (props) => {
 					Login
 				</Button>
 			</form>
-			<Typography>
-				Not Registered ?
+			<Typography className={classes.register}>
+				Not Registered?
 				<Link to='/register' className={classes.link}>
 					Register here
 				</Link>

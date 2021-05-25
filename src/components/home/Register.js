@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import { Link } from 'react-router-dom'
 import { makeStyles, Button, TextField, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { startRegisterUser } from '../../actions/userAuthAction'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		paddingTop: '30%',
+		marginTop: '20%',
 		paddingLeft: '50%',
 		display: 'flex',
 		flexWrap: 'wrap',
-		justifyContent: 'center',
 		direction: 'column',
 		minWidth: '100vh',
 	},
 	title: {
-		marginRight: '60%',
-		marginLeft: '32%',
+		marginLeft: '28%',
 	},
 	textField: {
 		marginLeft: theme.spacing(10),
@@ -25,10 +24,18 @@ const useStyles = makeStyles((theme) => ({
 		width: '50ch',
 	},
 	button: {
-		marginLeft: theme.spacing(15),
-		marginRight: theme.spacing(15),
-		width: '40ch',
-		marginBottom: '2em',
+		marginLeft: theme.spacing(20),
+		marginRight: theme.spacing(20),
+		width: '30ch',
+		marginTop: '1em',
+	},
+	register: {
+		marginLeft: '36%',
+		marginTop: '10px',
+	},
+	link: {
+		textDecoration: 'none',
+		color: 'blue',
 	},
 }))
 
@@ -90,11 +97,7 @@ const Register = (props) => {
 
 	return (
 		<div className={classes.root}>
-			<Typography
-				className={classes.title}
-				variant='h4'
-				component='header'
-				color='primary'>
+			<Typography className={classes.title} variant='h4' color='primary'>
 				Register
 			</Typography>
 			<form onSubmit={formik.handleSubmit}>
@@ -164,7 +167,6 @@ const Register = (props) => {
 					helperText={formik.touched.address && formik.errors.address}
 					multiline
 				/>
-
 				<Button
 					className={classes.button}
 					color='primary'
@@ -172,6 +174,12 @@ const Register = (props) => {
 					type='submit'>
 					Register
 				</Button>
+				<Typography className={classes.register}>
+					Already Registered?
+					<Link to='/login' className={classes.link}>
+						Login here
+					</Link>
+				</Typography>
 			</form>
 		</div>
 	)

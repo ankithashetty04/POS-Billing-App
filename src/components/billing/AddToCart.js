@@ -49,7 +49,6 @@ const AddToCart = () => {
 		}
 
 		if (Object.values(formData).includes('') !== true) {
-			console.log(formData)
 			dispatch(addToCart(formData))
 		} else {
 			alert('Enter product name')

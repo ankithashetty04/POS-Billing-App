@@ -1,13 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { useFormik } from 'formik'
-import * as yup from 'yup'
-import {
-	makeStyles,
-	Button,
-	TextField,
-	Select,
-	MenuItem,
-} from '@material-ui/core'
+import React from 'react'
+
+import { makeStyles, Button } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import {
 	startCreateBills,
@@ -69,23 +62,23 @@ const GenerateBill = () => {
 	}
 
 	const handleClick = (data = customersData, items = cart) => {
-		const formData = {
-			date: new Date(),
-			customer: data._id,
-			lineItems: items.map((ele) => {
-				return {
-					product: ele.products,
-					quantity: ele.quantity,
-				}
-			}),
-		}
-		console.log('serverData', formData)
-		if (Object.keys(data).length > 0 && items.length > 0) {
+		if (data) {
+			const formData = {
+				date: new Date(),
+				customer: data._id,
+				lineItems: items.map((ele) => {
+					return {
+						product: ele.products,
+						quantity: ele.quantity,
+					}
+				}),
+			}
+
 			dispatch(startCreateBills(formData))
 			dispatch(clearCart())
 			dispatch(clearBillData())
 		} else {
-			alert('fill all the Required fields')
+			alert('fill customer data')
 		}
 	}
 

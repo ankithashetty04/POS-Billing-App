@@ -20,10 +20,9 @@ import {
 import html2pdf from 'html2pdf.js'
 
 const useStyles = makeStyles((theme) => ({
-	appBar: {
-		position: 'relative',
-	},
 	layout: {
+		height: '100vh',
+		overflowX: 'auto',
 		width: 'auto',
 		marginLeft: theme.spacing(2),
 		marginRight: theme.spacing(2),
@@ -34,11 +33,11 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	paper: {
-		marginTop: theme.spacing(3),
+		marginTop: theme.spacing(1),
 		marginBottom: theme.spacing(3),
 		padding: theme.spacing(2),
 		[theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-			marginTop: theme.spacing(6),
+			marginTop: theme.spacing(1),
 			marginBottom: theme.spacing(6),
 			padding: theme.spacing(3),
 		},
@@ -112,6 +111,7 @@ const Invoice = (props) => {
 							style={{
 								backgroundColor: 'green',
 								color: 'white',
+								marginBottom: '1em',
 							}}>
 							Download
 						</Button>

@@ -29,15 +29,10 @@ const AppBarComp = () => {
 			<AppBar>
 				<Toolbar className={classes.root}>
 					<Container>
-						<Grid
-							direction='row'
-							justify='flexstart'
-							alignItems='baseline'
-							container
-							spacing={5}>
+						<Grid direction='row' alignItems='baseline' container spacing={5}>
 							<Grid item>
 								<Link to='/' className={classes.link}>
-									POS
+									<Typography>POS</Typography>
 								</Link>
 							</Grid>
 						</Grid>
@@ -51,17 +46,17 @@ const AppBarComp = () => {
 							spacing={5}>
 							<Grid item>
 								<Link to='/' className={classes.link}>
-									Home
+									<Typography> Home</Typography>
 								</Link>
 							</Grid>
 							<Grid item>
 								<Link to='/register' className={classes.link}>
-									Register
+									<Typography>Register</Typography>
 								</Link>
 							</Grid>
 							<Grid item>
 								<Link to='/login' className={classes.link}>
-									Login
+									<Typography>Login</Typography>
 								</Link>
 							</Grid>
 						</Grid>

@@ -36,7 +36,7 @@ const BillStats = () => {
 			{bills.length > 0 ? (
 				<div>
 					<Typography component='h1' variant='title'>
-						Last Five Bills
+						Last Five Order Stats
 					</Typography>
 					<ComposedChart
 						width={600}
