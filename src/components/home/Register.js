@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: '1em',
 	},
 	register: {
-		marginLeft: '36%',
+		marginLeft: '34%',
 		marginTop: '10px',
 	},
 	link: {
