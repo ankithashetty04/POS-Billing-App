@@ -3,13 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { startGetBills } from '../../actions/billingAction'
 import { startGetCustomers } from '../../actions/customerAction'
 import { startGetProducts } from '../../actions/productAction'
-import {
-	makeStyles,
-	Card,
-	CardContent,
-	CardHeader,
-	Paper,
-} from '@material-ui/core'
+import { makeStyles, Card, CardContent, CardHeader } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
 	root: {

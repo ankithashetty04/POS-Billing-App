@@ -25,14 +25,15 @@ const BillList = (props) => {
 	const { handleInvoice } = props
 	const dispatch = useDispatch()
 	const classes = useStyles()
-	const billsData = useSelector((state) => state.bill)
-	const bills = billsData.bills
-
-	const customerData = billsData.customers
 
 	useEffect(() => {
 		dispatch(startGetBills())
 	}, [])
+
+	const billsData = useSelector((state) => state.bill)
+	const bills = billsData.bills.reverse()
+
+	const customerData = billsData.customers
 
 	const handleDelete = (id) => {
 		const confirm = window.confirm('Do you want to delete this customer')

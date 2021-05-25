@@ -52,16 +52,16 @@ const Cart = (props) => {
 											<TableCell align='center'>
 												<Button
 													onClick={() => {
-														handleIncrease(ele.products._id)
+														handleDecrease(ele.products._id)
 													}}>
-													+
+													-
 												</Button>
 												{ele.quantity}
 												<Button
 													onClick={() => {
-														handleDecrease(ele.products._id)
+														handleIncrease(ele.products._id)
 													}}>
-													-
+													+
 												</Button>
 											</TableCell>
 											<TableCell align='center'>

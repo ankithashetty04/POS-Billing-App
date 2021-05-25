@@ -17,8 +17,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	title: {
 		marginRight: '60%',
-		marginLeft: '35%',
-		width: '100px',
+		marginLeft: '32%',
 	},
 	textField: {
 		marginLeft: theme.spacing(10),
@@ -91,7 +90,11 @@ const Register = (props) => {
 
 	return (
 		<div className={classes.root}>
-			<Typography className={classes.title} variant='h6'>
+			<Typography
+				className={classes.title}
+				variant='h4'
+				component='header'
+				color='primary'>
 				Register
 			</Typography>
 			<form onSubmit={formik.handleSubmit}>

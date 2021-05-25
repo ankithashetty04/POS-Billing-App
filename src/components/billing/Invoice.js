@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { startGetUserInfo } from '../../actions/userAuthAction'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import _ from 'lodash'
+import moment from 'moment'
 
 import {
 	makeStyles,
@@ -17,6 +17,7 @@ import {
 	TableRow,
 	Grid,
 } from '@material-ui/core'
+import html2pdf from 'html2pdf.js'
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
@@ -62,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Invoice = (props) => {
-	const dispatch = useDispatch()
 	const classes = useStyles()
 	const { handleToggle } = props
 
@@ -75,14 +75,27 @@ const Invoice = (props) => {
 
 	const customerName = _.find(customer, { _id: billData.customer })
 
+	const handleInvoiceDownload = () => {
+		var opt = {
+			margin: 0,
+			html2canvas: { scale: 3 },
+			jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+		}
+		let invoice = document.getElementById('invoice')
+		html2pdf()
+			.from(invoice)
+			.set(opt)
+			.save(`Bill-${customerName.name}-${moment(billData.createdAt).format('l')}`)
+	}
+
 	return (
 		<div>
 			<React.Fragment>
 				<CssBaseline />
-
-				<main className={classes.layout}>
-					<Paper className={classes.paper}>
+				<Grid container spacing={10} style={{ marginTop: '20px' }}>
+					<Grid item xs={5}>
 						<Button
+							style={{ marginLeft: '20%' }}
 							variant='contained'
 							color='secondary'
 							align='right'
@@ -91,6 +104,21 @@ const Invoice = (props) => {
 							}}>
 							&times;
 						</Button>
+					</Grid>
+					<Grid item xs={5}>
+						<Button
+							onClick={handleInvoiceDownload}
+							variant='contained'
+							style={{
+								backgroundColor: 'green',
+								color: 'white',
+							}}>
+							Download
+						</Button>
+					</Grid>
+				</Grid>
+				<main className={classes.layout}>
+					<Paper className={classes.paper} id='invoice'>
 						<Typography
 							gutterBottom
 							component='h1'
@@ -99,7 +127,9 @@ const Invoice = (props) => {
 							className={classes.title}>
 							{userData.businessName.toUpperCase()}
 						</Typography>
-						<Typography>Date : {billData.createdAt.slice(0, 10)}</Typography>
+						<Typography>
+							Date : {moment(billData.createdAt).format('MMMM Do YYYY')}
+						</Typography>
 
 						<Typography gutterBottom component='h1' variant='h4' align='center'>
 							Invoice

@@ -62,7 +62,8 @@ const BillData = () => {
 		setData('')
 		setName('')
 		setEmail('')
-		if (Object.values(customerData).includes('') !== true) {
+		if (Object.values(formData).includes('') !== true) {
+			// if (Object.values(customerData).includes('') !== true) {
 			dispatch(billCustomerData(formData))
 		} else {
 			alert('Enter All required Fields')
@@ -90,6 +91,7 @@ const BillData = () => {
 							label='Enter Mobile Number'
 							className={classes.textField}
 							variant='outlined'
+							required='required'
 						/>
 					)}
 				/>
@@ -103,6 +105,7 @@ const BillData = () => {
 					className={classes.textField}
 					label=' Customer Name'
 					variant='outlined'
+					disabled
 				/>
 
 				<TextField
@@ -113,6 +116,7 @@ const BillData = () => {
 					label='Email'
 					onChange={handleChange}
 					variant='outlined'
+					disabled
 				/>
 
 				<Button

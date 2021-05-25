@@ -1,9 +1,9 @@
 import React from 'react'
 import Chart from './Chart'
 import Dashboard from './Dashboard'
-import { makeStyles, Grid, Box, Button } from '@material-ui/core'
+import { makeStyles, Grid, Box } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	root: {
 		padding: '10px',
 	},
