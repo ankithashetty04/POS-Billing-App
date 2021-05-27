@@ -9,6 +9,7 @@ import {
 	TableRow,
 	Button,
 } from '@material-ui/core'
+import _ from 'lodash'
 import {
 	startDeleteBill,
 	startGetBillData,
@@ -32,6 +33,7 @@ const BillList = (props) => {
 
 	const billsData = useSelector((state) => state.bill)
 	const bills = billsData.bills
+	const sortedBills = _.orderBy(bills, ['createdAt'], ['desc'])
 
 	const customerData = billsData.customers
 
@@ -52,7 +54,7 @@ const BillList = (props) => {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{bills.reverse().map((data, i) => (
+					{sortedBills.map((data, i) => (
 						<TableRow key={data._id}>
 							<TableCell align='center'>{i + 1}</TableCell>
 							{customerData.map((ele) => {

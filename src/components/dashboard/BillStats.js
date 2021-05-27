@@ -4,6 +4,7 @@ import { startGetBills } from '../../actions/billingAction'
 import { startGetCustomers } from '../../actions/customerAction'
 import { startGetProducts } from '../../actions/productAction'
 import _ from 'lodash'
+import moment from 'moment'
 import {
 	ComposedChart,
 	Line,
@@ -29,17 +30,21 @@ const BillStats = () => {
 
 	const sortedActivities = bills.sort((a, b) => b.date - a.date).slice(-5)
 
+	sortedActivities.map((ele) => {
+		return moment(ele.date).format('l')
+	})
+
 	const data = [...sortedActivities]
 
 	return (
 		<div>
 			{bills.length > 0 ? (
 				<div>
-					<Typography component='h1' variant='title'>
+					<Typography component='h1' variant='h3'>
 						Last Five Order Stats
 					</Typography>
 					<ComposedChart
-						width={600}
+						width={800}
 						height={500}
 						data={data}
 						margin={{
@@ -49,12 +54,18 @@ const BillStats = () => {
 							left: 20,
 						}}>
 						<CartesianGrid stroke='#f5f5f5' />
-						<XAxis dataKey='createdAt' scale='band' />
+						<XAxis
+							dataKey='date'
+							type='category'
+							domain={['dataMin', 'dataMax']}
+							tickFormatter={(tick) => moment(tick).format('ll').slice(0, 6)}
+							scale='band'
+						/>
 						<YAxis />
 						<Tooltip />
 						<Legend />
 						<Bar dataKey='total' barSize={20} fill='#413ea0' />
-						{/* <Line type='monotone' dataKey='total' stroke='#ff7300' /> */}
+						<Line type='monotone' dataKey='total' stroke='#ff7300' />
 					</ComposedChart>
 				</div>
 			) : (
