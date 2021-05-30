@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: '10px',
 		width: 200,
 	},
-
 	title: {
 		fontSize: 28,
 	},

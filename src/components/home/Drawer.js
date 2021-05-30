@@ -1,12 +1,5 @@
 import React from 'react'
-import { Link, Route, withRouter } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { logoutUser } from '../../actions/userAuthAction'
-import DashBoardContainer from '../dashboard/DashBoardContainer'
-import Products from '../products/Products'
-import Customer from '../customers/Customers'
-import Billing from '../billing/Billing'
-import Profile from './Profile'
+import { Link } from 'react-router-dom'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
@@ -21,11 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import MailIcon from '@material-ui/icons/Mail'
-import NavBar from './NavBar'
 
 const drawerWidth = 240
 
@@ -64,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		alignItems: 'center',
 		padding: theme.spacing(0, 1),
-		// necessary for content to be below app bar
 		...theme.mixins.toolbar,
 		justifyContent: 'flex-end',
 	},

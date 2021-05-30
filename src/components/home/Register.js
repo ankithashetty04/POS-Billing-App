@@ -8,15 +8,15 @@ import { startRegisterUser } from '../../actions/userAuthAction'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		marginTop: '20%',
-		paddingLeft: '50%',
+		marginTop: '10%',
+		marginLeft: '32%',
 		display: 'flex',
 		flexWrap: 'wrap',
 		direction: 'column',
 		minWidth: '100vh',
 	},
 	title: {
-		marginLeft: '28%',
+		marginLeft: '20%',
 	},
 	textField: {
 		marginLeft: theme.spacing(10),

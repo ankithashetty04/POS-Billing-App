@@ -8,15 +8,15 @@ import { startLoginUser } from '../../actions/userAuthAction'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		paddingTop: '40%',
-		paddingLeft: '50%',
+		marginTop: '18%',
+		paddingLeft: '30%',
 		display: 'flex',
 		flexWrap: 'wrap',
 		direction: 'column',
 		minWidth: '100vh',
 	},
 	title: {
-		marginLeft: '30%',
+		marginLeft: '22%',
 	},
 	textField: {
 		marginLeft: theme.spacing(10),

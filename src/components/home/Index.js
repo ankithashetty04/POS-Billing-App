@@ -36,13 +36,7 @@ const Index = () => {
 				</div>
 			) : (
 				<div>
-					<Container fixed>
-						<Grid container>
-							<Grid item xs={6}>
-								<NavBar userLoggedIn={userLoggedIn} handleAuth={handleAuth} />
-							</Grid>
-						</Grid>
-					</Container>
+					<NavBar userLoggedIn={userLoggedIn} handleAuth={handleAuth} />
 				</div>
 			)}
 		</div>
