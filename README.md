@@ -1,6 +1,6 @@
 This web app has the following features
 
-1.Register and Login - Secured login depending on JWT Token and user authorisation and authentication
+1.Register and Login - Secured login depending on JWT Token authentication
 
 2.Dashboard - The dashboard gives stats of the orders made by his customers and information about the products, customers
 
