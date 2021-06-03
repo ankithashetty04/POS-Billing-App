@@ -15,6 +15,7 @@ import {
 	startGetBillData,
 	startGetBills,
 } from '../../actions/billingAction'
+import swal from 'sweetalert'
 
 const useStyles = makeStyles({
 	table: {
@@ -38,10 +39,22 @@ const BillList = (props) => {
 	const customerData = billsData.customers
 
 	const handleDelete = (id) => {
-		const confirm = window.confirm('Do you want to delete this customer')
-		if (confirm) {
-			dispatch(startDeleteBill(id))
-		}
+		swal({
+			title: 'Are you sure?',
+			text: 'Do you want to Delete this Bill?',
+			icon: 'warning',
+			buttons: [true, 'Yes'],
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				dispatch(startDeleteBill(id))
+				swal('Bill Deleted!', '', {
+					icon: 'success',
+				})
+			} else {
+				swal('Bill not deleted!', '', 'info')
+			}
+		})
 	}
 	return (
 		<div>
@@ -61,7 +74,7 @@ const BillList = (props) => {
 								return (
 									ele._id === data.customer && (
 										<TableCell key={data._id} align='center'>
-											{ele.name}
+											{ele.name[0].toUpperCase() + ele.name.slice(1)}
 										</TableCell>
 									)
 								)

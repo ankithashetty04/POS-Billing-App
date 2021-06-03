@@ -37,7 +37,8 @@ const AddCustomers = (props) => {
 		name: yup.string('Enter Customer Name').required('Customer name is required'),
 		mobile: yup
 			.number('Enter only Number')
-			.min(10, 'Please enter 10 digits')
+			.min(1000000000, 'Invalid Phone Number')
+			.max(9999999999, 'Please enter valid number')
 			.required('Mobile number is required'),
 		email: yup
 			.string('Enter your email')

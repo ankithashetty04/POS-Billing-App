@@ -11,6 +11,7 @@ import {
 	Typography,
 } from '@material-ui/core'
 import _ from 'lodash'
+import swal from 'sweetalert'
 
 const Cart = (props) => {
 	const { handleIncrease, handleDecrease } = props
@@ -18,10 +19,20 @@ const Cart = (props) => {
 	const dispatch = useDispatch()
 
 	const handleRemove = (id) => {
-		const confirm = window.confirm('are you sure')
-		if (confirm) {
-			dispatch(updateCart(id))
-		}
+		swal({
+			title: 'Are you sure?',
+			text: 'Remove this Item from Cart?',
+			icon: 'warning',
+			buttons: [true, 'Yes'],
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				dispatch(updateCart(id))
+				swal('Item Removed Successfully!', '', {
+					icon: 'success',
+				})
+			}
+		})
 	}
 
 	const totalAmount = () => {

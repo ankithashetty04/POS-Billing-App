@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { billCustomerData } from '../../actions/billingAction'
 import { startGetCustomers } from '../../actions/customerAction'
+import swal from 'sweetalert'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -63,7 +64,7 @@ const BillData = () => {
 		if (Object.values(formData).includes('') !== true) {
 			dispatch(billCustomerData(formData))
 		} else {
-			alert('Enter All required Fields')
+			swal('Enter All required Fields', '', 'warning')
 		}
 	}
 

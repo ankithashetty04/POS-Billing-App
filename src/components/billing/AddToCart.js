@@ -4,6 +4,7 @@ import { makeStyles, Button, TextField } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart } from '../../actions/billingAction'
 import { startGetProducts } from '../../actions/productAction'
+import swal from 'sweetalert'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -51,7 +52,7 @@ const AddToCart = () => {
 		if (Object.values(formData).includes('') !== true) {
 			dispatch(addToCart(formData))
 		} else {
-			alert('Enter product name')
+			swal('Enter product name', '', 'warning')
 		}
 	}
 	return (

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 //to get all bills data
 export const startGetBills = () => {
@@ -14,7 +15,7 @@ export const startGetBills = () => {
 				dispatch(getBills(data))
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal(`${error.message}`, '', 'error')
 			})
 	}
 }
@@ -38,10 +39,10 @@ export const startCreateBills = (formData) => {
 			.then((response) => {
 				const data = response.data
 				dispatch(createBill(data))
-				alert('Bill Generated Sucessfully')
+				swal('Bill Generated Sucessfully', '', 'success')
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal(`${error.message}`, '', 'error')
 			})
 	}
 }
@@ -67,7 +68,7 @@ export const startGetBillData = (id) => {
 				dispatch(getBillData(data))
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal(`${error.message}`, '', 'error')
 			})
 	}
 }
@@ -93,7 +94,7 @@ export const startDeleteBill = (id) => {
 				dispatch(deleteBill(data))
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal(`${error.message}`, '', 'error')
 			})
 	}
 }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 //User Registration
 export const startRegisterUser = (formData) => {
@@ -13,13 +14,21 @@ export const startRegisterUser = (formData) => {
 						? alert(`username '${registerData.keyValue.username}' already exists`)
 						: alert(`email '${registerData.keyValue.email}' already exists`)
 				} else {
-					alert('Registration Succesfull')
+					swal({
+						title: 'Registered Succesfully!',
+						icon: 'success',
+						button: 'ok',
+					})
 					dispatch(registerUser(registerData))
 				}
 			})
 
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -39,15 +48,28 @@ export const startLoginUser = (formData) => {
 			.then((response) => {
 				const loginData = response.data
 				if (Object.keys(loginData).includes('errors')) {
-					alert(loginData.errors)
+					swal({
+						title: `${loginData.errors}`,
+						icon: 'error',
+						button: 'ok',
+					})
 				} else {
-					alert('sucessfully logged in')
+					swal({
+						title: 'Succesfully logged in',
+						icon: 'success',
+						button: 'ok',
+					})
+
 					localStorage.setItem('token', `Bearer ${loginData.token}`)
 					dispatch(loginUser(loginData))
 				}
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -70,11 +92,14 @@ export const startGetUserInfo = () => {
 			})
 			.then((response) => {
 				const data = response.data
-				//console.log(data)
 				dispatch(userInfo(data))
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }

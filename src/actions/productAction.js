@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import swal from 'sweetalert'
 //To get all products data
 export const startGetProducts = () => {
 	return (dispatch) => {
@@ -14,7 +14,11 @@ export const startGetProducts = () => {
 				dispatch(getProducts(productsData))
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -39,10 +43,18 @@ export const startAddProduct = (formData) => {
 				const data = response.data
 
 				dispatch(addProduct(data))
-				alert('Product added succesfully')
+				swal({
+					title: 'Product added succesfully',
+					icon: 'success',
+					button: 'ok',
+				})
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -68,7 +80,11 @@ export const startGetProductData = (id) => {
 				dispatch(getProductData(data))
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -93,10 +109,18 @@ export const startEditProductsData = (id, formData) => {
 			.then((response) => {
 				const data = response.data
 				dispatch(editProductData(data))
-				alert('Data updated Succesfully')
+				swal({
+					title: 'Data updated Succesfully',
+					icon: 'success',
+					button: 'ok',
+				})
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -126,11 +150,19 @@ export const startDeleteProduct = (id) => {
 			})
 			.then((response) => {
 				const data = response.data
-				alert('Product deleted succesfully')
 				dispatch(deleteProduct(data))
+				swal({
+					title: 'Product deleted succesfully',
+					icon: 'success',
+					button: 'ok',
+				})
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }

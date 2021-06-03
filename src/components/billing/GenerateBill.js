@@ -11,6 +11,7 @@ import {
 
 import Cart from './Cart'
 import _ from 'lodash'
+import swal from 'sweetalert'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -78,7 +79,8 @@ const GenerateBill = () => {
 			dispatch(clearCart())
 			dispatch(clearBillData())
 		} else {
-			alert('fill customer data')
+			swal('Enter Customer Data', '', 'warning')
+			// alert('fill customer data')
 		}
 	}
 
@@ -102,11 +104,21 @@ const GenerateBill = () => {
 						className={classes.button}
 						color='secondary'
 						onClick={() => {
-							const confirm = window.confirm('do you want to cancel')
-							if (confirm) {
-								dispatch(clearCart())
-								dispatch(clearBillData())
-							}
+							swal({
+								title: 'Are you sure?',
+								text: 'Do you want to Cancel this order?',
+								icon: 'warning',
+								buttons: [true, 'Yes'],
+								dangerMode: true,
+							}).then((willDelete) => {
+								if (willDelete) {
+									dispatch(clearCart())
+									dispatch(clearBillData())
+									swal('Order Cancelled!', '', {
+										icon: 'success',
+									})
+								}
+							})
 						}}>
 						Cancel
 					</Button>

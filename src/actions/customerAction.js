@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 //To get all customers data
 export const startGetCustomers = () => {
@@ -14,7 +15,11 @@ export const startGetCustomers = () => {
 				dispatch(getCustomers(customersData))
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -37,12 +42,15 @@ export const startAddCustomers = (formData) => {
 			})
 			.then((response) => {
 				const data = response.data
-
 				dispatch(addCustomer(data))
-				alert('Customers added succesfully')
+				swal('Customer added succesfully', '', 'success')
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -68,7 +76,11 @@ export const startGetCustomerData = (id) => {
 				dispatch(getCustomerData(data))
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -93,10 +105,14 @@ export const startEditCustomerData = (id, formData) => {
 			.then((response) => {
 				const data = response.data
 				dispatch(editCustomerData(data))
-				alert('Data updated Succesfully')
+				swal('Data Updated Succesfully', '', 'success')
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }
@@ -126,11 +142,19 @@ export const startDeleteCustomer = (id) => {
 			})
 			.then((response) => {
 				const data = response.data
-				alert('customer deleted succesfully')
 				dispatch(deleteCustomer(data))
+				swal({
+					title: 'Customer Deleted Succesfully',
+					icon: 'success',
+					button: 'ok',
+				})
 			})
 			.catch((error) => {
-				alert(error.message)
+				swal({
+					title: `${error.message}`,
+					icon: 'error',
+					button: 'ok',
+				})
 			})
 	}
 }

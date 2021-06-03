@@ -141,7 +141,7 @@ const DrawerComp = (props) => {
 					</Link>
 					<Link to='/customers' className={classes.link}>
 						<ListItem button>
-							<ListItemText primary='Customer' />
+							<ListItemText primary='Customers' />
 						</ListItem>
 					</Link>
 					<Link to='/billing' className={classes.link}>

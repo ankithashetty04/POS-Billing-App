@@ -16,6 +16,7 @@ import {
 	Button,
 	TextField,
 } from '@material-ui/core'
+import swal from 'sweetalert'
 
 const useStyles = makeStyles({
 	table: {
@@ -41,10 +42,22 @@ const CustomerList = (props) => {
 	}
 
 	const handleDelete = (id) => {
-		const confirm = window.confirm('Do you want to delete this customer')
-		if (confirm) {
-			dispatch(startDeleteCustomer(id))
-		}
+		swal({
+			title: 'Are you sure?',
+			text: 'Do you want to Delete this Customer Data?',
+			icon: 'warning',
+			buttons: [true, 'Yes'],
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				dispatch(startDeleteCustomer(id))
+				swal('Custromer Deleted Successfully!', '', {
+					icon: 'success',
+				})
+			} else {
+				swal('Customer data is safe!', '', 'info')
+			}
+		})
 	}
 
 	return (
@@ -83,7 +96,9 @@ const CustomerList = (props) => {
 												<React.Fragment key={data._id}>
 													<TableRow>
 														<TableCell>{i + 1}</TableCell>
-														<TableCell>{data.name}</TableCell>
+														<TableCell>
+															{data.name[0].toUpperCase() + data.name.slice(1)}
+														</TableCell>
 														<TableCell>{data.email}</TableCell>
 														<TableCell>{data.mobile}</TableCell>
 

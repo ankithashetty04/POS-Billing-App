@@ -3,7 +3,6 @@ import { Link, Route, withRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../actions/userAuthAction'
 import { makeStyles, Grid } from '@material-ui/core'
-
 import Login from './Login'
 import Register from './Register'
 import DashBoardContainer from '../dashboard/DashBoardContainer'
@@ -14,7 +13,7 @@ import Profile from './Profile'
 import Home from './Home'
 import DrawerComp from './Drawer'
 import AppBarComp from './AppBar'
-
+import swal from 'sweetalert'
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
@@ -34,14 +33,22 @@ const NavBar = (props) => {
 	const { userLoggedIn, handleAuth } = props
 
 	const handleLogout = () => {
-		const confirm = window.confirm('Do you want to logout')
-		if (confirm) {
-			localStorage.removeItem('token')
-			handleAuth()
-			alert('succesfully logged out')
-			props.history.push('/')
-			dispatch(logoutUser())
-		}
+		swal({
+			title: 'Do you want to logout?',
+			icon: 'warning',
+			buttons: [true, 'Yes'],
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				localStorage.removeItem('token')
+				dispatch(logoutUser())
+				handleAuth()
+				props.history.push('/')
+				swal('Logged out Successfully!', '', {
+					icon: 'success',
+				})
+			}
+		})
 	}
 
 	return (
@@ -70,7 +77,7 @@ const NavBar = (props) => {
 					return <Home {...props} userLoggedIn={userLoggedIn} />
 				}}
 			/>
-			{/* <Route path='/' component={Home} exact={true} /> */}
+
 			<Route path='/dashboard' component={DashBoardContainer} />
 			<Route path='/products' component={Products} />
 			<Route path='/customers' component={Customer} />

@@ -16,6 +16,7 @@ import {
 	Button,
 	TextField,
 } from '@material-ui/core'
+import swal from 'sweetalert'
 
 const useStyles = makeStyles({
 	table: {
@@ -42,10 +43,21 @@ const ProductsList = (props) => {
 	}
 
 	const handleDelete = (id) => {
-		const confirm = window.confirm('Do you want to delete this product')
-		if (confirm) {
-			dispatch(startDeleteProduct(id))
-		}
+		swal({
+			title: 'Do you want to delete this product?',
+			icon: 'warning',
+			buttons: [true, 'Yes'],
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				dispatch(startDeleteProduct(id))
+				swal('Product Deleted Successfully!', '', {
+					icon: 'success',
+				})
+			} else {
+				swal('Product data is safe!', '', 'info')
+			}
+		})
 	}
 
 	return (
