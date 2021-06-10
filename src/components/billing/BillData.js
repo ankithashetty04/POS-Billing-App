@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles, Button, TextField } from '@material-ui/core'
+import { makeStyles, Button, TextField, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { billCustomerData } from '../../actions/billingAction'
@@ -120,7 +120,7 @@ const BillData = () => {
 					className={classes.button}
 					color='primary'
 					variant='contained'>
-					Confirm
+					<Typography>Confirm</Typography>
 				</Button>
 			</form>
 		</div>

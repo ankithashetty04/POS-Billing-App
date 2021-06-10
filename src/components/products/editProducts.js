@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { makeStyles, Button, TextField } from '@material-ui/core'
+import { makeStyles, Button, TextField, Typography } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import {
 	startEditProductsData,
@@ -89,7 +89,7 @@ const EditProducts = (props) => {
 					color='primary'
 					variant='contained'
 					type='submit'>
-					Update
+					<Typography variant='h6'>Update</Typography>
 				</Button>
 				<Button
 					className={classes.button}
@@ -100,7 +100,7 @@ const EditProducts = (props) => {
 						handleToggle(false)
 						dispatch(clearProdData())
 					}}>
-					Cancel
+					<Typography variant='h6'>Cancel</Typography>
 				</Button>
 			</form>
 		</div>

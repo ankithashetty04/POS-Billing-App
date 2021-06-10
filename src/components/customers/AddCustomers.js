@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { makeStyles, Button, TextField } from '@material-ui/core'
+import { makeStyles, Button, TextField, Typography } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { startAddCustomers } from '../../actions/customerAction'
 
@@ -103,7 +103,7 @@ const AddCustomers = (props) => {
 					color='primary'
 					variant='contained'
 					type='submit'>
-					Add
+					<Typography variant='h6'>Add</Typography>
 				</Button>
 			</form>
 		</div>

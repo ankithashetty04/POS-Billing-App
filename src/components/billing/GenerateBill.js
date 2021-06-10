@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { makeStyles, Button } from '@material-ui/core'
+import { makeStyles, Button, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import {
 	startCreateBills,
@@ -97,7 +97,7 @@ const GenerateBill = () => {
 						onClick={() => {
 							handleClick(customersData, cart)
 						}}>
-						Generate Bill
+						<Typography variant='h6'>Generate Bill</Typography>
 					</Button>
 					<Button
 						variant='contained'
@@ -120,11 +120,11 @@ const GenerateBill = () => {
 								}
 							})
 						}}>
-						Cancel
+						<Typography variant='h6'>Cancel</Typography>
 					</Button>
 				</div>
 			) : (
-				<div>No Items added</div>
+				<Typography>No Items added</Typography>
 			)}
 		</div>
 	)

@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react'
-import { Link, Route, withRouter } from 'react-router-dom'
+import React from 'react'
+import { Route, withRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../actions/userAuthAction'
-import { makeStyles, Grid } from '@material-ui/core'
-import Login from './Login'
-import Register from './Register'
+import { makeStyles } from '@material-ui/core'
+import Login from '../home/Login'
+import Register from '../home/Register'
 import DashBoardContainer from '../dashboard/DashBoardContainer'
 import Products from '../products/Products'
 import Customer from '../customers/Customers'
 import Billing from '../billing/Billing'
-import Profile from './Profile'
-import Home from './Home'
+import Profile from '../profile/Profile'
+import Home from '../home/Home'
 import DrawerComp from './Drawer'
 import AppBarComp from './AppBar'
 import swal from 'sweetalert'
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
@@ -54,7 +55,7 @@ const NavBar = (props) => {
 	return (
 		<div>
 			{userLoggedIn ? (
-				<div className={classes.root}>
+				<div>
 					<DrawerComp handleLogout={handleLogout} />
 				</div>
 			) : (

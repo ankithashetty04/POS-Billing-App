@@ -11,7 +11,7 @@ import BillData from './BillData'
 import BillList from './BillList'
 import AddToCart from './AddToCart'
 import Invoice from './Invoice'
-import { makeStyles, Modal } from '@material-ui/core'
+import { makeStyles, Modal, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -58,8 +58,8 @@ const Billing = () => {
 
 	return (
 		<div>
-			<h1>Billing</h1>
-
+			<Typography variant='h3'>Billing</Typography>
+			<br />
 			<BillData />
 			<br />
 			<AddToCart />
@@ -67,11 +67,15 @@ const Billing = () => {
 			{Object.keys(customer).length > 0 ? (
 				<div>
 					{!Object.values(customer).includes('') && (
-						<h1>Customer - {customer.customer.name}</h1>
+						<Typography variant='h4'>
+							Customer -{' '}
+							{customer.customer.name[0].toUpperCase() +
+								customer.customer.name.slice(1)}
+						</Typography>
 					)}
 				</div>
 			) : (
-				<div>No Customers Added</div>
+				<Typography>No Customers Added</Typography>
 			)}
 
 			<div>
@@ -79,7 +83,8 @@ const Billing = () => {
 			</div>
 
 			<hr />
-			<h2>Listing Bills - {bills.length}</h2>
+			<br />
+			<Typography variant='h4'>Listing Bills - {bills.length}</Typography>
 			<BillList handleInvoice={handleInvoice} />
 			{toggleInvoice && Object.keys(billData).length > 0 && (
 				<Modal

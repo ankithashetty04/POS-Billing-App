@@ -8,6 +8,7 @@ import {
 	TableHead,
 	TableRow,
 	Button,
+	Typography,
 } from '@material-ui/core'
 import _ from 'lodash'
 import {
@@ -61,26 +62,38 @@ const BillList = (props) => {
 			<Table className={classes.table} aria-label='simple table'>
 				<TableHead>
 					<TableRow>
-						<TableCell align='center'>Sl.NO</TableCell>
-						<TableCell align='center'>Customer</TableCell>
-						<TableCell align='center'>Total</TableCell>
+						<TableCell align='center'>
+							<Typography variant='h5'>Sl.NO</Typography>
+						</TableCell>
+						<TableCell align='center'>
+							<Typography variant='h5'>Customer</Typography>{' '}
+						</TableCell>
+						<TableCell align='center'>
+							<Typography variant='h5'>Total</Typography>
+						</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
 					{sortedBills.map((data, i) => (
 						<TableRow key={data._id}>
-							<TableCell align='center'>{i + 1}</TableCell>
+							<TableCell align='center'>
+								<Typography variant='h6'>{i + 1}</Typography>
+							</TableCell>
 							{customerData.map((ele) => {
 								return (
 									ele._id === data.customer && (
 										<TableCell key={data._id} align='center'>
-											{ele.name[0].toUpperCase() + ele.name.slice(1)}
+											<Typography variant='h6'>
+												{ele.name[0].toUpperCase() + ele.name.slice(1)}
+											</Typography>
 										</TableCell>
 									)
 								)
 							})}
 
-							<TableCell align='center'>{data.total}</TableCell>
+							<TableCell align='center'>
+								<Typography variant='h6'>{data.total}</Typography>
+							</TableCell>
 
 							<TableCell align='center'>
 								<Button
@@ -90,7 +103,7 @@ const BillList = (props) => {
 										handleInvoice(data._id)
 										dispatch(startGetBillData(data._id))
 									}}>
-									View
+									<Typography variant='h6'>View</Typography>
 								</Button>
 							</TableCell>
 							<TableCell align='center'>
@@ -100,7 +113,7 @@ const BillList = (props) => {
 									onClick={() => {
 										handleDelete(data._id)
 									}}>
-									Delete
+									<Typography variant='h6'>Delete</Typography>
 								</Button>
 							</TableCell>
 						</TableRow>

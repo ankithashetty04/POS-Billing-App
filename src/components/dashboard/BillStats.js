@@ -58,7 +58,7 @@ const BillStats = () => {
 							dataKey='date'
 							type='category'
 							domain={['dataMin', 'dataMax']}
-							tickFormatter={(tick) => moment(tick).format('ll').slice(0, 6)}
+							tickFormatter={(tick) => moment(tick).format('ll').slice(0, 5)}
 							scale='band'
 						/>
 						<YAxis />

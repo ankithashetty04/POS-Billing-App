@@ -47,16 +47,24 @@ const Cart = (props) => {
 				<Typography variant='h4'>
 					Cart - {cart.length} | Total - {totalAmount()}
 				</Typography>
-				<Typography variant='h4'></Typography>
+				<Typography variant='h6'></Typography>
 				{cart.length > 0 ? (
 					<div>
 						<Table>
 							<TableHead>
 								<TableRow>
-									<TableCell align='center'>Sl.NO</TableCell>
-									<TableCell align='center'>Product</TableCell>
-									<TableCell align='center'>Price</TableCell>
-									<TableCell align='center'>Quantity</TableCell>
+									<TableCell align='center'>
+										<Typography variant='h5'>Sl.NO</Typography>
+									</TableCell>
+									<TableCell align='center'>
+										<Typography variant='h5'>Product</Typography>
+									</TableCell>
+									<TableCell align='center'>
+										<Typography variant='h5'>Price</Typography>
+									</TableCell>
+									<TableCell align='center'>
+										<Typography variant='h5'>Quantity</Typography>
+									</TableCell>
 									<TableCell align='center'></TableCell>
 								</TableRow>
 							</TableHead>
@@ -64,10 +72,16 @@ const Cart = (props) => {
 								{cart.map((ele, i) => {
 									return (
 										<TableRow key={ele.products._id}>
-											<TableCell align='center'>{i + 1}</TableCell>
-											<TableCell align='center'>{ele.products.name} </TableCell>
 											<TableCell align='center'>
-												{ele.products.price * ele.quantity}
+												<Typography variant='h6'>{i + 1}</Typography>
+											</TableCell>
+											<TableCell align='center'>
+												<Typography variant='h6'>{ele.products.name}</Typography>
+											</TableCell>
+											<TableCell align='center'>
+												<Typography variant='h6'>
+													{ele.products.price * ele.quantity}
+												</Typography>
 											</TableCell>
 											<TableCell align='center'>
 												<Button
@@ -92,7 +106,7 @@ const Cart = (props) => {
 													onClick={() => {
 														handleRemove(ele.products._id)
 													}}>
-													Remove
+													<Typography variant='h6'>Remove</Typography>
 												</Button>
 											</TableCell>
 										</TableRow>
@@ -102,7 +116,7 @@ const Cart = (props) => {
 						</Table>
 					</div>
 				) : (
-					<div>No items added</div>
+					<Typography>No items added</Typography>
 				)}
 			</div>
 		</div>

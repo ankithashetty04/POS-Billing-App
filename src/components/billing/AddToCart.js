@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Autocomplete from '@material-ui/lab/Autocomplete'
-import { makeStyles, Button, TextField } from '@material-ui/core'
+import { makeStyles, Button, TextField, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart } from '../../actions/billingAction'
 import { startGetProducts } from '../../actions/productAction'
@@ -82,7 +82,7 @@ const AddToCart = () => {
 					className={classes.button}
 					color='primary'
 					type='submit'>
-					Add to cart
+					<Typography>Add to cart </Typography>
 				</Button>
 			</form>
 		</div>

@@ -9,7 +9,7 @@ import { startRegisterUser } from '../../actions/userAuthAction'
 const useStyles = makeStyles((theme) => ({
 	root: {
 		marginTop: '10%',
-		marginLeft: '32%',
+		marginLeft: '30%',
 		display: 'flex',
 		flexWrap: 'wrap',
 		direction: 'column',
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: '1em',
 	},
 	register: {
-		marginLeft: '25%',
+		marginLeft: '26%',
 		marginTop: '10px',
 	},
 	link: {

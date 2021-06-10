@@ -8,6 +8,7 @@ import {
 
 import {
 	makeStyles,
+	Typography,
 	Table,
 	TableBody,
 	TableCell,
@@ -62,14 +63,14 @@ const ProductsList = (props) => {
 
 	return (
 		<div>
-			<h1>Products</h1>
-
+			<Typography variant='h4'>List of Products - {products.length}</Typography>
+			<br />
 			<div>
 				{products.length > 0 ? (
 					<>
 						<TextField
 							className={classes.textField}
-							variant='standard'
+							variant='outlined'
 							type='text'
 							value={search}
 							onChange={handleSearch}
@@ -79,10 +80,15 @@ const ProductsList = (props) => {
 						<Table className={classes.table} aria-label='simple table'>
 							<TableHead>
 								<TableRow>
-									<TableCell>Sl.No</TableCell>
-									<TableCell>Name</TableCell>
-									<TableCell>Price</TableCell>
-
+									<TableCell>
+										<Typography variant='h5'>Sl.No</Typography>
+									</TableCell>
+									<TableCell>
+										<Typography variant='h5'>Name</Typography>
+									</TableCell>
+									<TableCell>
+										<Typography variant='h5'>Price</Typography>
+									</TableCell>
 									<TableCell></TableCell>
 								</TableRow>
 							</TableHead>
@@ -96,11 +102,18 @@ const ProductsList = (props) => {
 											{results.map((data, i) => (
 												<React.Fragment key={data._id}>
 													<TableRow>
-														<TableCell>{i + 1}</TableCell>
 														<TableCell>
-															{data.name[0].toUpperCase() + data.name.slice(1)}
+															<Typography variant='h6'>{i + 1}</Typography>
 														</TableCell>
-														<TableCell>Rs.{data.price}</TableCell>
+														<TableCell>
+															<Typography variant='h6'>
+																{data.name[0].toUpperCase() + data.name.slice(1)}
+															</Typography>
+														</TableCell>
+
+														<TableCell>
+															<Typography variant='h6'>Rs.{data.price}</Typography>
+														</TableCell>
 														<TableCell>
 															<Button
 																color='default'
@@ -108,7 +121,7 @@ const ProductsList = (props) => {
 																onClick={() => {
 																	handleEdit(data._id)
 																}}>
-																Edit
+																<Typography variant='h6'>Edit</Typography>
 															</Button>
 														</TableCell>
 														<TableCell>
@@ -118,7 +131,7 @@ const ProductsList = (props) => {
 																onClick={() => {
 																	handleDelete(data._id)
 																}}>
-																Delete
+																<Typography variant='h6'> Delete</Typography>
 															</Button>
 														</TableCell>
 													</TableRow>

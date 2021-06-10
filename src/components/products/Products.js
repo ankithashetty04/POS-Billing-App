@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core'
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { startGetProductData } from '../../actions/productAction'
@@ -24,7 +25,7 @@ const Products = () => {
 		<div>
 			{toggle && Object.keys(productsData).length > 0 ? (
 				<div>
-					<h1>Edit Product</h1>
+					<Typography variant='h3'>Edit Product</Typography>
 					<EditProducts
 						toggle={toggle}
 						handleToggle={handleToggle}
@@ -33,7 +34,7 @@ const Products = () => {
 				</div>
 			) : (
 				<div>
-					<h1>Add Products</h1>
+					<Typography variant='h3'>Add Products</Typography>
 					<AddProducts />
 				</div>
 			)}

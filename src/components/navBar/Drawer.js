@@ -95,21 +95,25 @@ const DrawerComp = (props) => {
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
+
 			<AppBar
-				position='fixed'
+				position='absolute'
+				style={{
+					background: 'transparent',
+				}}
 				className={clsx(classes.appBar, {
 					[classes.appBarShift]: open,
 				})}>
 				<Toolbar>
 					<IconButton
-						color='inherit'
+						color='default'
 						aria-label='open drawer'
 						onClick={handleDrawerOpen}
 						edge='start'
 						className={clsx(classes.menuButton, open && classes.hide)}>
 						<MenuIcon />
 					</IconButton>
-					<Typography variant='h6' noWrap>
+					<Typography variant='h6' noWrap style={{ color: 'blue' }}>
 						POS - Billing App
 					</Typography>
 				</Toolbar>

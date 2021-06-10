@@ -8,8 +8,8 @@ import { startLoginUser } from '../../actions/userAuthAction'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		marginTop: '18%',
-		paddingLeft: '30%',
+		marginTop: '20%',
+		paddingLeft: '32%',
 		display: 'flex',
 		flexWrap: 'wrap',
 		direction: 'column',
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: '1em',
 	},
 	register: {
-		marginLeft: '25%',
+		marginLeft: '28%',
 		marginTop: '10px',
 	},
 	link: {

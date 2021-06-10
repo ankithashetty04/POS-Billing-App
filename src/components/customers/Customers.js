@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { startGetCustomerData } from '../../actions/customerAction'
@@ -25,7 +26,7 @@ const Customers = () => {
 		<div>
 			{toggle && Object.keys(customerData).length > 0 ? (
 				<div>
-					<h1>Edit Customer Data</h1>
+					<Typography variant='h3'>Edit Customer Data</Typography>
 					<EditCustomers
 						toggle={toggle}
 						handleToggle={handleToggle}
@@ -34,7 +35,7 @@ const Customers = () => {
 				</div>
 			) : (
 				<div>
-					<h1>Add Customers</h1>
+					<Typography variant='h3'>Add Customers</Typography>
 					<AddCustomers toggle={toggle} />
 				</div>
 			)}

@@ -1,19 +1,14 @@
 import React from 'react'
 import Chart from './Chart'
 import Dashboard from './Dashboard'
-import { makeStyles, Grid, Box } from '@material-ui/core'
-
-const useStyles = makeStyles(() => ({
-	root: {
-		padding: '10px',
-	},
-}))
+import { Grid, Box, Typography } from '@material-ui/core'
 
 const DashBoardContainer = () => {
-	const classes = useStyles()
 	return (
-		<div className={classes.root}>
-			<h1>Dashboard</h1>
+		<div>
+			<Typography variant='h3'>Dashboard</Typography>
+			<br />
+
 			<Box component='span'>
 				<Grid container spacing={10}>
 					<Grid item xs={4}>

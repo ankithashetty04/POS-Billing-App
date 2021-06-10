@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { makeStyles, Button, TextField } from '@material-ui/core'
+import { makeStyles, Button, TextField, Typography } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import {
 	clearCustData,
@@ -109,7 +109,7 @@ const EditCustomers = (props) => {
 					color='primary'
 					variant='contained'
 					type='submit'>
-					Update
+					<Typography variant='h6'> Update</Typography>
 				</Button>
 				<Button
 					className={classes.button}
@@ -120,7 +120,7 @@ const EditCustomers = (props) => {
 						handleToggle(false)
 						dispatch(clearCustData())
 					}}>
-					Cancel
+					<Typography variant='h6'>Cancel</Typography>
 				</Button>
 			</form>
 		</div>

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import NavBar from './NavBar'
+import NavBar from '../navBar/NavBar'
 import { makeStyles, Container, Grid } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	root: {
+		minHeight: '97vh',
+		minWidth: '100vh',
+		background: 'linear-gradient(30deg, white 10%, #ffb64d 90%)',
 		display: 'flex',
-		flexWrap: 'wrap',
 	},
 }))
 
@@ -35,7 +37,7 @@ const Index = () => {
 					</Container>
 				</div>
 			) : (
-				<div>
+				<div className={classes.root}>
 					<NavBar userLoggedIn={userLoggedIn} handleAuth={handleAuth} />
 				</div>
 			)}

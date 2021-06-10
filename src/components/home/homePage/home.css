@@ -3,7 +3,7 @@
 	animation: typing 3s steps(30), blink 0.5s;
 	white-space: nowrap;
 	overflow: hidden;
-	border-right: 3px solid white;
+	border-right: 3px solid transparent;
 }
 
 @keyframes typing {

@@ -8,6 +8,7 @@ import {
 
 import {
 	makeStyles,
+	Typography,
 	Table,
 	TableBody,
 	TableCell,
@@ -62,14 +63,15 @@ const CustomerList = (props) => {
 
 	return (
 		<div>
-			<h1>Customers </h1>
-
+			<Typography variant='h4'>List of Customers - {customers.length}</Typography>
+			<br />
 			<div>
 				{customers.length > 0 ? (
 					<>
 						<TextField
 							className={classes.textField}
 							type='text'
+							variant='outlined'
 							value={search}
 							onChange={handleSearch}
 							placeholder='Search Customer'
@@ -77,11 +79,18 @@ const CustomerList = (props) => {
 						<Table className={classes.table} aria-label='simple table'>
 							<TableHead>
 								<TableRow>
-									<TableCell>Sl.No</TableCell>
-									<TableCell>Name</TableCell>
-									<TableCell>Email</TableCell>
-									<TableCell>Mobile</TableCell>
-
+									<TableCell>
+										<Typography variant='h5'>Sl.No</Typography>
+									</TableCell>
+									<TableCell>
+										<Typography variant='h5'>Name</Typography>
+									</TableCell>
+									<TableCell>
+										<Typography variant='h5'>Email</Typography>
+									</TableCell>
+									<TableCell>
+										<Typography variant='h5'>Mobile</Typography>
+									</TableCell>
 									<TableCell></TableCell>
 								</TableRow>
 							</TableHead>
@@ -95,12 +104,21 @@ const CustomerList = (props) => {
 											{results.map((data, i) => (
 												<React.Fragment key={data._id}>
 													<TableRow>
-														<TableCell>{i + 1}</TableCell>
 														<TableCell>
-															{data.name[0].toUpperCase() + data.name.slice(1)}
+															<Typography variant='h6'></Typography>
+															{i + 1}
 														</TableCell>
-														<TableCell>{data.email}</TableCell>
-														<TableCell>{data.mobile}</TableCell>
+														<TableCell>
+															<Typography variant='h6'>
+																{data.name[0].toUpperCase() + data.name.slice(1)}
+															</Typography>
+														</TableCell>
+														<TableCell>
+															<Typography variant='h6'>{data.email}</Typography>
+														</TableCell>
+														<TableCell>
+															<Typography variant='h6'>{data.mobile}</Typography>
+														</TableCell>
 
 														<TableCell>
 															<Button
@@ -109,7 +127,7 @@ const CustomerList = (props) => {
 																onClick={() => {
 																	handleEdit(data._id)
 																}}>
-																Edit
+																<Typography variant='h6'>Edit</Typography>
 															</Button>
 														</TableCell>
 														<TableCell>
@@ -119,7 +137,7 @@ const CustomerList = (props) => {
 																onClick={() => {
 																	handleDelete(data._id)
 																}}>
-																Delete
+																<Typography variant='h6'>Delete</Typography>
 															</Button>
 														</TableCell>
 													</TableRow>
