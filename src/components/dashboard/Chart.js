@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { startGetBills } from '../../actions/billingAction'
 import { startGetCustomers } from '../../actions/customerAction'
 import { startGetProducts } from '../../actions/productAction'
